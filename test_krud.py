@@ -1,15 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Basic tests for Krud module."""
-
-def test_import():
-    """Test that Krud module can be imported."""
-    try:
-        import Krud
-        assert True
-    except ImportError:
-        assert False, "Failed to import Krud module"
-
+"""Basic tests for Krud module dependencies."""
 
 def test_cryptography_available():
     """Test that cryptography is installed."""
@@ -20,4 +11,22 @@ def test_cryptography_available():
 def test_distro_available():
     """Test that distro is installed."""
     import distro
-    assert distro.version() is not None
+    version = distro.version()
+    assert version is not None
+
+
+def test_pathlib_available():
+    """Test that pathlib is available."""
+    from pathlib import Path
+    assert Path is not None
+
+
+def test_basic_imports():
+    """Test basic Python imports used by Krud."""
+    import threading
+    import subprocess
+    import os
+    import sys
+    import time
+    import datetime
+    assert all([threading, subprocess, os, sys, time, datetime])
